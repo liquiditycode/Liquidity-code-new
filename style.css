@@ -1,0 +1,86 @@
+/* Import Font Profesional */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
+/* Reset & Background Dasar */
+body {
+    background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Container Partikel agar tidak menutupi tombol */
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    top: 0;
+    left: 0;
+}
+
+/* Efek Glow & Floating pada Logo */
+.glow-logo {
+    filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.6));
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Style Tombol Glassmorphism Lonjong */
+.glass-btn {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); /* Support Safari */
+    border: 1.5px solid rgba(255, 255, 255, 0.2); /* Bingkai lonjong putih transparan */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* Efek Hover Tombol */
+.glass-btn:hover {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    transform: scale(1.03);
+    border-color: #ffffff;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Style Ikon Sosial Media */
+.social-icon {
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+.social-icon:hover {
+    opacity: 1;
+    transform: translateY(-5px) scale(1.2);
+}
+
+/* Sistem Animasi Muncul (Reveal) */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsif Mobile (Thumb-Friendly) */
+@media (max-width: 640px) {
+    .glass-btn {
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+    }
+}
