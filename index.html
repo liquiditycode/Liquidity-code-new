@@ -6,7 +6,94 @@
     <title>Liquidity Code | Indonesia</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Import Font Profesional */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
+        /* Reset & Background Dasar */
+        body {
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Container Partikel agar tidak menutupi tombol */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            top: 0;
+            left: 0;
+        }
+
+        /* Efek Glow & Floating pada Logo */
+        .glow-logo {
+            filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.6));
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Style Tombol Glassmorphism Lonjong */
+        .glass-btn {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px); /* Support Safari */
+            border: 1.5px solid rgba(255, 255, 255, 0.2); /* Bingkai lonjong putih transparan */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Efek Hover Tombol */
+        .glass-btn:hover {
+            background: rgba(255, 255, 255, 0.95);
+            color: #000;
+            transform: scale(1.03);
+            border-color: #ffffff;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Style Ikon Sosial Media */
+        .social-icon {
+            transition: all 0.3s ease;
+            opacity: 0.8;
+        }
+
+        .social-icon:hover {
+            opacity: 1;
+            transform: translateY(-5px) scale(1.2);
+        }
+
+        /* Sistem Animasi Muncul (Reveal) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsif Mobile (Thumb-Friendly) */
+        @media (max-width: 640px) {
+            .glass-btn {
+                padding-top: 1.25rem;
+                padding-bottom: 1.25rem;
+            }
+        }
+    </style>
 </head>
 <body class="text-white min-h-screen flex flex-col items-center justify-center p-6">
 
@@ -30,15 +117,24 @@
         </div>
 
         <div class="space-y-4 reveal">
+            <!-- 1. Grup WA Public -->
             <a href="https://chat.whatsapp.com/LA1z63XCPh992i7YnTU40N?mode=gi_t" target="_blank" class="glass-btn block w-full py-4 px-6 rounded-full group">
                 <p class="font-bold text-lg group-hover:scale-110 transition-transform">Grup Liquidity code public</p>
                 <p class="text-xs opacity-60">WhatsApp Community - Join free</p>
             </a>
+
+            <!-- 2. Saluran WA -->
+            <a href="YOUR_WHATSAPP_CHANNEL_URL_HERE" target="_blank" class="glass-btn block w-full py-4 px-6 rounded-full group">
+                <p class="font-bold text-lg group-hover:scale-110 transition-transform">Saluran WhatsApp Liquidity</p>
+                <p class="text-xs opacity-60">WhatsApp Channel - Dapatkan Update Terbaru</p>
+            </a>
             
+            <!-- 3. Link Exness -->
             <a href="https://one.exnessonelink.com/a/rf8bgpdmuh" target="_blank" class="glass-btn block w-full py-5 px-6 rounded-full font-bold text-lg">
                 Link Exness
             </a>
             
+            <!-- 4. Portofolio -->
             <a href="https://liquiditycode.vercel.app/" target="_blank" class="glass-btn block w-full py-5 px-6 rounded-full font-bold text-lg">
                 Portofolio Liquidity code
             </a>
@@ -50,6 +146,41 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="script.js"></script>
+    <script>
+        // 1. Inisialisasi Particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 60, density: { enable: true, value_area: 800 } },
+                color: { value: "#ffffff" },
+                shape: { type: "circle" },
+                opacity: { value: 0.2 },
+                size: { value: 2 },
+                line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.1, width: 1 },
+                move: { enable: true, speed: 1.2 }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" } }
+            }
+        });
+
+        // 2. Animasi Muncul (Reveal) saat Loading
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            reveals.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('active');
+                }, 200 * index); // Efek muncul bergantian (staggered)
+            });
+        });
+
+        // 3. Efek Click Feedback
+        const buttons = document.querySelectorAll('.glass-btn');
+        buttons.forEach(btn => {
+            btn.addEventListener('mousedown', () => btn.style.transform = "scale(0.95)");
+            btn.addEventListener('mouseup', () => btn.style.transform = "scale(1.05)");
+        });
+    </script>
 </body>
 </html>
